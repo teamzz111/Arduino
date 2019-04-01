@@ -46,18 +46,13 @@ namespace ArduinoC
                 if(int.Parse(label1.Text)<200 && int.Parse(label1.Text) >0)
                     grafica(int.Parse(POT));
             }
-            
-
         }
-        
-        public void grafica(int x)
+
+        int x = 0;
+        public void grafica(int y)
         {
-            
-                chart1.Series[0].Points.AddXY(y, x);
-                y++;
-            
-                
-            
+                chart1.Series[0].Points.AddXY(x, y);
+                x++;
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -65,13 +60,11 @@ namespace ArduinoC
             //cerrar puerto
             if (ArduinoPort.IsOpen) ArduinoPort.Close();
         }
-
-        int y = 0;
+        
         
         private void Form1_Load(object sender, EventArgs e)
         {
             chart1.Series[0].Points.AddXY(0, 200);
-            timer1.Start();
         }
 
         private void chart1_Click(object sender, EventArgs e)
