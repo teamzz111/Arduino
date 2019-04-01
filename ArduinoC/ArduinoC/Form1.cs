@@ -40,9 +40,11 @@ namespace ArduinoC
         {
             //What to do with the received line here
             this.label1.Text = POT;
+            
             if (int.TryParse(label1.Text, out int t))
             {
-                grafica(int.Parse(POT));
+                if(int.Parse(label1.Text)<200 && int.Parse(label1.Text) >0)
+                    grafica(int.Parse(POT));
             }
             
 
@@ -50,11 +52,12 @@ namespace ArduinoC
         
         public void grafica(int x)
         {
-            if(x<=200)
-            {
+            
                 chart1.Series[0].Points.AddXY(y, x);
                 y++;
-            }
+            
+                
+            
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
